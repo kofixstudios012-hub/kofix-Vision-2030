@@ -31,3 +31,7 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` in this fol
 | Financial vision | Concept diagram only | Licensed partners, Bank of Ghana and other legal approvals |
 
 Use "Reset demo" in the footer to clear saved demo data.
+
+## Version 2 additions
+- `js/music.js`: hidden background piano. Six calm piano-style pieces are generated in the browser (no audio files, no licences). A new piece fades in every 90 seconds. There is no button or on-page indicator. Browsers block sound until the visitor first taps, clicks or presses a key, so music starts on that first interaction.
+- `css/fx.css` and `js/fx.js`: bubble-style buttons with click pops, floating bubbles, 3D tilt cards, a spinning 3D coin, a scroll progress bar, and four animated explainers (point journey, referral journey, lesson flow, redemption flow). Reduced-motion settings switch the decorative motion off.

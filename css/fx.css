@@ -1,0 +1,61 @@
+/* Extra animation layer. Loaded after style.css. Nothing here changes content. */
+main,footer{position:relative;z-index:1}
+.bubbles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bubbles i{position:absolute;bottom:-90px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff4,#c8a24a22 50%,#0000 72%);border:1px solid #c8a24a30;animation:rise linear infinite}
+@keyframes rise{to{transform:translate(40px,-118vh)}}
+#sp{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--g),var(--g2));box-shadow:0 0 10px var(--g)}
+
+/* bubble buttons */
+.b,.tabs button{border-radius:999px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .2s}
+.b{box-shadow:inset 0 -7px 12px #0003,inset 0 6px 10px #fff7,0 8px 22px #c8a24a45;animation:bob 4.2s ease-in-out infinite}
+.b.o{box-shadow:inset 0 0 16px #c8a24a30,inset 0 5px 8px #ffffff12,0 6px 16px #0008}
+.b::before,.tabs button::before{content:"";position:absolute;top:9%;left:12%;width:38%;height:32%;border-radius:50%;background:radial-gradient(#fffa,#fff0 72%);pointer-events:none}
+.b:nth-child(2n){animation-delay:-1.4s}.b:nth-child(3n){animation-delay:-2.6s}
+.b:hover,.tabs button:hover{transform:scale(1.08)}.b:active,.tabs button:active{transform:scale(.92)}.b:disabled{animation:none;transform:none}
+@keyframes bob{50%{translate:0 -3px}}
+.rp{position:absolute;border-radius:50%;border:2px solid #fff;width:12px;height:12px;margin:-6px;pointer-events:none;animation:rpl .7s ease-out forwards}
+@keyframes rpl{to{transform:scale(14);opacity:0}}
+.pop{position:fixed;width:10px;height:10px;border-radius:50%;pointer-events:none;z-index:98;background:radial-gradient(circle at 30% 30%,#fff9,#c8a24a99);animation:pp .9s ease-out forwards}
+@keyframes pp{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+
+/* 3D */
+.arc{animation:sway 14s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translateY(-50%) perspective(900px) rotateY(-20deg)}50%{transform:translateY(-50%) perspective(900px) rotateY(20deg) scale(1.05);opacity:.2}}
+.coin{position:absolute;right:9vw;top:24%;width:120px;height:120px;perspective:600px;display:none}
+.coin div{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff6,#ecd48a 28%,#c8a24a 62%,#6b5314);display:grid;place-items:center;font:2.6rem Georgia,serif;color:#2a2008;box-shadow:inset 0 0 0 6px #0002,0 0 40px #c8a24a55;animation:spin 6s linear infinite}
+.coin small{position:absolute;left:0;right:0;bottom:-1.6rem;text-align:center;color:var(--m);font-size:.72rem}
+@keyframes spin{to{transform:rotateY(360deg)}}
+@media(min-width:1000px){.coin{display:block}}
+.tile,.grid>.card,button.pick{transition:transform .2s,border-color .2s,box-shadow .2s;transform-style:preserve-3d}
+.tile:hover,.grid>.card:hover{box-shadow:0 18px 36px #0009,0 0 0 1px #c8a24a55}
+.fw{animation:flt 6s ease-in-out infinite}
+@keyframes flt{50%{translate:0 -8px}}
+
+/* graphic touches */
+h1{background:linear-gradient(90deg,#f3efe6 20%,#ecd48a 50%,#f3efe6 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite}
+@keyframes sh{to{background-position:-220% 0}}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:calc(-1.4rem - 7px);top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--g);animation:pl 2.4s infinite}
+@keyframes pl{to{box-shadow:0 0 0 14px #0000}}
+.hb i{animation:gw 1s ease-out}.bar i{animation:gw 1s ease-out}.chart div{animation:up .8s ease-out}
+@keyframes gw{from{width:0}}@keyframes up{from{height:0}}
+.pill{animation:gl2 3.5s ease-in-out infinite}@keyframes gl2{50%{box-shadow:0 0 12px #c8a24a55}}
+@supports(animation-timeline:view()){
+ .card:not(.ex),.tile,.tl>div,details{animation:rise2 linear backwards;animation-timeline:view();animation-range:entry 0% entry 40%}
+ @keyframes rise2{from{opacity:0;transform:translateY(34px) scale(.96)}}
+}
+
+/* explainers */
+.ex{margin:1rem 0;overflow:hidden}
+.ex h3{margin-bottom:.8rem}
+.exs{position:relative;display:flex;justify-content:space-between;gap:.5rem;padding:0 1.5rem;margin:.8rem 0 1.4rem}
+.exs::before{content:"";position:absolute;left:2.3rem;right:2.3rem;top:23px;height:3px;background:#222;border-radius:3px}
+.exl{position:absolute;left:2.3rem;top:23px;height:3px;background:linear-gradient(90deg,var(--g),var(--g2));border-radius:3px;transition:width .9s;box-shadow:0 0 10px var(--g)}
+.st{position:relative;text-align:center;flex:1;max-width:130px;font-size:.78rem;color:var(--m);perspective:400px}
+.st i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto .4rem;border-radius:50%;background:#111;border:2px solid #333;color:var(--m);font:1.1rem Georgia,serif;font-style:normal;transition:transform .9s,background .4s,border-color .4s,box-shadow .4s}
+.st.on i{transform:rotateY(360deg) scale(1.15);background:radial-gradient(circle at 30% 28%,#fff6,var(--g2) 35%,var(--g));color:#000;border-color:var(--g2);box-shadow:0 0 22px #c8a24a88}
+.st.on,.st.dn{color:var(--t)}.st.dn i{border-color:var(--g)}
+.tok{position:absolute;top:13px;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fffc,#ecd48a55 55%,#0000 72%);border:1px solid #fff5;transition:left .9s cubic-bezier(.5,0,.2,1);pointer-events:none;animation:bob 2s ease-in-out infinite}
+.exc{min-height:3.2em;color:var(--t);animation:fi .6s}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:600px){.exs{padding:0}.exs::before,.exl{left:1.4rem}.st{font-size:.68rem}}
